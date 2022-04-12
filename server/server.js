@@ -11,3 +11,6 @@ const QueryRoot = new graphql.GraphQLInputObjectType({
         }
     }) 
 })
+
+const schema = new graphql.GraphQLSchema({ query: QueryRoot })
+
