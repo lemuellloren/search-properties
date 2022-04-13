@@ -31,3 +31,36 @@ const client = new Client({
   database: "properties"
 })
 client.connect()
+
+const joinMonster = require('join-monster');
+
+const Owner = new graphql.GraphQLObjectType({
+  name: 'Owner',
+  fields: () => ({
+    id: { type: graphql.GraphQLString },
+    first_name: { type: graphql.GraphQLString },
+    last_name: { type: graphql.GraphQLString }
+  })
+});
+
+Owner._typeConfig = {
+  sqlTable: 'owner',
+  uniqueKey: 'id',
+}
+
+const Property = new graphql.GraphQLObjectType({
+  name: 'Property',
+  fields: () => ({
+    property_id: { type: graphql.GraphQLString },
+    street: { type: graphql.GraphQLString },
+    city: { type: graphql.GraphQLString },
+    state: { type: graphql.GraphQLString },
+    postal_code: { type: graphql.GraphQLString },
+    rent: { type: graphql.GraphQLInt }
+  })
+});
+
+Property._typeConfig = {
+  sqlTable: 'property',
+  uniqueKey: 'property_id'
+}
