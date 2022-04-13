@@ -22,3 +22,12 @@ app.use('/api', graphqlHTTP({
     graphiql: true,
 }));
 app.listen(port);
+
+const { Client } = require('pg')
+const client = new Client({
+  host: "localhost",
+  user: "lemuellloren",
+  password: "",
+  database: "properties"
+})
+client.connect()
