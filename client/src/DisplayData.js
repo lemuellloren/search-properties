@@ -15,9 +15,6 @@ const QUERY_ALL_COUNTRIES = gql `
 
 function DisplayData() {
     const {data, loading, error} = useQuery(QUERY_ALL_COUNTRIES);
-    if(data) {
-        console.log(data);
-    }
     if(loading) {
         return <h2>Data is Loading .....</h2>
     }
@@ -27,6 +24,16 @@ function DisplayData() {
     return (
         <div>
             <h2>List of countries</h2>
+            {data && data.countries.map((countries) => {
+                return (
+                  <div>
+                    <p>Code: {countries.code}</p>
+                    <p>Name: {countries.name}</p>
+                    <p>Capital: {countries.capital}</p>
+                    <p>Currency: {countries.currency}</p>
+                  </div>
+                )
+            })}
         </div>
     )
 }
