@@ -3,9 +3,9 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery,
-  gql
+  useQuery
 } from "@apollo/client";
+import DisplayData from './DisplayData';
 
 function App() {
   const client = new ApolloClient({
@@ -13,9 +13,9 @@ function App() {
     uri: 'https://countries.trevorblades.com/'
   })
   return (
-    <ApolloProvider>
+    <ApolloProvider client={client}>
         <div className="App">
-            Hello World!
+            <DisplayData/>
         </div>
     </ApolloProvider>
  
