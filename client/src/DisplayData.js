@@ -19,6 +19,9 @@ const GET_COUNTRY_BY_NAME = gql`
             name
             native
             phone
+            capital
+            currency
+            emoji
         }
     }
 `
@@ -55,6 +58,9 @@ function DisplayData() {
                         <p>Name: {countrySearchData.country.name}</p>
                         <p>Native: {countrySearchData.country.native}</p>
                         <p>Phone: {countrySearchData.country.phone}</p>
+                        <p>Capital: {countrySearchData.country.capital}</p>
+                        <p>Currency: {countrySearchData.country.currency}</p>
+                        <p>Emoji: {countrySearchData.country.emoji}</p>
                     </div>
                     )}
                     {countryError && <h2> There was an error fetching the data</h2>}
