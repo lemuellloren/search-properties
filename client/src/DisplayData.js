@@ -29,7 +29,7 @@ function DisplayData() {
     const [countrySearch, setCountrySearched]= useState("");
     const { data, loading, error } = useQuery(QUERY_ALL_COUNTRIES);
     const [fetchCountry, 
-        { data: countrySearchData , error: countryError },
+        { data: countrySearchData , loading: countryLoading, error: countryError },
     ] = useLazyQuery(GET_COUNTRY_BY_NAME);
 
     return (
@@ -64,6 +64,7 @@ function DisplayData() {
                     </div>
                     )}
                     {countryError && <h2> There was an error fetching the data</h2>}
+                    {countryLoading && <h2>DATA IS LOADING...</h2>}
                 </div>
             </div>
         </div>
