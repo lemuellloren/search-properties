@@ -37,7 +37,7 @@ function DisplayData() {
             <div className="search-country">
             <h2>Search Country</h2>
                 <input type="text" placeholder="Search Country by Code" onChange={(event) => {
-                    setCountrySearched(event.target.value);
+                    setCountrySearched(event.target.value.toUpperCase());
                     }}
                     />
                 <button
