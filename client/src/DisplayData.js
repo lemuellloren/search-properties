@@ -26,7 +26,7 @@ function DisplayData() {
             <h2>List of countries</h2>
             {data && data.countries.map((countries) => {
                 return (
-                  <div>
+                  <div key={countries.code}>
                     <p>Code: {countries.code}</p>
                     <p>Name: {countries.name}</p>
                     <p>Capital: {countries.capital}</p>
