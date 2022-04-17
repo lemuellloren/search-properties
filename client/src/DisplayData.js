@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
-import { ListGroup, Button, InputGroup, FormControl  } from 'react-bootstrap';
+import { ListGroup, Button, InputGroup, FormControl, Alert } from 'react-bootstrap';
 
 
 
@@ -35,45 +35,65 @@ function DisplayData() {
     ] = useLazyQuery(GET_COUNTRY_BY_NAME);
 
     return (
-        <div>
-            <div className="search-country">
-            <h2>Search Country</h2>
-                <InputGroup className="mb-3"
-                    onChange={(event) => {
-                        setCountrySearched(event.target.value.toUpperCase());
-                    }}>
-                    <FormControl
-                        placeholder="Search Country by Code"
-                        aria-label="Search Country by Code"
-                        />
-                    <Button variant="primary" id="button-addon2"
-                    onClick={() => {
-                        fetchCountry({
-                        variables: {
-                            code: countrySearch,
-                        },
-                        });
-                    }}>Button
-                    </Button>
-                </InputGroup>
-                <div className="country-data">
-                    {countrySearchData && (
-                    <div>
-                        <ListGroup variant="flush">
-                            <ListGroup.Item>Code: {countrySearchData.country.code}</ListGroup.Item>
-                            <ListGroup.Item>Name: {countrySearchData.country.name}</ListGroup.Item>
-                            <ListGroup.Item>Native: {countrySearchData.country.native}</ListGroup.Item>
-                            <ListGroup.Item>Phone: {countrySearchData.country.phone}</ListGroup.Item>
-                            <ListGroup.Item>Capital: {countrySearchData.country.capital}</ListGroup.Item>
-                            <ListGroup.Item>Currency: {countrySearchData.country.currency}</ListGroup.Item>
-                            <ListGroup.Item>Emoji: {countrySearchData.country.emoji}</ListGroup.Item>
-                        </ListGroup>
+        <div class="row row--height d-flex align-content-center justify-content-center">
+           <div class="col-lg-6">
+            <div class="search-country">
+                <h2>Search Country</h2>
+                    <InputGroup class="mb-3"
+                        onChange={(event) => {
+                            setCountrySearched(event.target.value.toUpperCase());
+                        }}>
+                        <FormControl
+                            placeholder="Search Country by Code"
+                            aria-label="Search Country by Code"
+                            />
+                        <Button variant="primary" id="button-addon2"
+                        onClick={() => {
+                            fetchCountry({
+                            variables: {
+                                code: countrySearch,
+                            },
+                            });
+                        }}>Search
+                        </Button>
+                    </InputGroup>
+                    <div class="row mt-2">
+                        <div class="col-lg-3">
+                            <p class="fs-6">Popular Search</p>
+                        </div>
+                        <div class="col-lg-9">
+                            <span class="me-1 badge bg-secondary">PH</span>
+                            <span class="me-1 badge bg-secondary">US</span>
+                            <span class="me-1 badge bg-secondary">SA</span>
+                        </div>
                     </div>
-                    )}
-                    {countryError && <h2> There was an error fetching the data</h2>}
-                    {countryLoading && <h2>DATA IS LOADING...</h2>}
+                    <div class="country-data">
+                        {countrySearchData && (
+                        <div>
+                            <ListGroup variant="flush">
+                                <ListGroup.Item><b>Code:</b> {countrySearchData.country.code}</ListGroup.Item>
+                                <ListGroup.Item><b>Name:</b> {countrySearchData.country.name}</ListGroup.Item>
+                                <ListGroup.Item><b>Native:</b> {countrySearchData.country.native}</ListGroup.Item>
+                                <ListGroup.Item><b>Phone:</b> {countrySearchData.country.phone}</ListGroup.Item>
+                                <ListGroup.Item><b>Capital:</b> {countrySearchData.country.capital}</ListGroup.Item>
+                                <ListGroup.Item><b>Currency:</b> {countrySearchData.country.currency}</ListGroup.Item>
+                                <ListGroup.Item><b>Emoji:</b> {countrySearchData.country.emoji}</ListGroup.Item>
+                            </ListGroup>
+                        </div>
+                        )}
+                        {countryError &&
+                            <Alert variant="danger">
+                                 There was an error fetching the data
+                            </Alert>
+                        }
+                        {countryLoading &&
+                            <Alert variant="success">
+                                 Your data is loading....
+                            </Alert>
+                        }
+                    </div>
                 </div>
-            </div>
+           </div>
         </div>
     )
 }
