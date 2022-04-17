@@ -13,7 +13,7 @@ const QUERY_ALL_COUNTRIES = gql `
     }
 `
 const GET_COUNTRY_BY_NAME = gql`
-    query Country($code: ID!) {
+    query Country($code: ID) {
         country(code: $code) {
             code
             name
