@@ -4,7 +4,6 @@ import {
   ApolloClient,
   InMemoryCache,
   ApolloProvider,
-  useQuery
 } from "@apollo/client";
 import DisplayData from './DisplayData';
 
