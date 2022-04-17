@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
-import { ListGroup } from 'react-bootstrap';
+import { ListGroup, Button } from 'react-bootstrap';
 
 
 
@@ -42,17 +42,14 @@ function DisplayData() {
                     setCountrySearched(event.target.value.toUpperCase());
                     }}
                     />
-                <button
+                <Button variant="primary"
                     onClick={() => {
                         fetchCountry({
                         variables: {
                             code: countrySearch,
                         },
                         });
-                    }}
-                    >
-                    Search Country
-                </button>
+                    }}>Search</Button>
                 <div className="country-data">
                     {countrySearchData && (
                     <div>
