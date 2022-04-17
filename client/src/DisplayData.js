@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
-import { ListGroup, Button } from 'react-bootstrap';
+import { ListGroup, Button, InputGroup, FormControl  } from 'react-bootstrap';
 
 
 
@@ -38,18 +38,24 @@ function DisplayData() {
         <div>
             <div className="search-country">
             <h2>Search Country</h2>
-                <input type="text" placeholder="Search Country by Code" onChange={(event) => {
-                    setCountrySearched(event.target.value.toUpperCase());
-                    }}
-                    />
-                <Button variant="primary"
+                <InputGroup className="mb-3"
+                    onChange={(event) => {
+                        setCountrySearched(event.target.value.toUpperCase());
+                    }}>
+                    <FormControl
+                        placeholder="Search Country by Code"
+                        aria-label="Search Country by Code"
+                        />
+                    <Button variant="primary" id="button-addon2"
                     onClick={() => {
                         fetchCountry({
                         variables: {
                             code: countrySearch,
                         },
                         });
-                    }}>Search</Button>
+                    }}>Button
+                    </Button>
+                </InputGroup>
                 <div className="country-data">
                     {countrySearchData && (
                     <div>
