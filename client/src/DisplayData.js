@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { gql, useLazyQuery, useQuery } from "@apollo/client";
+import { ListGroup } from 'react-bootstrap';
+
 
 
 const QUERY_ALL_COUNTRIES = gql `
@@ -54,13 +56,15 @@ function DisplayData() {
                 <div className="country-data">
                     {countrySearchData && (
                     <div>
-                        <p>Code: {countrySearchData.country.code}</p>
-                        <p>Name: {countrySearchData.country.name}</p>
-                        <p>Native: {countrySearchData.country.native}</p>
-                        <p>Phone: {countrySearchData.country.phone}</p>
-                        <p>Capital: {countrySearchData.country.capital}</p>
-                        <p>Currency: {countrySearchData.country.currency}</p>
-                        <p>Emoji: {countrySearchData.country.emoji}</p>
+                        <ListGroup variant="flush">
+                            <ListGroup.Item>Code: {countrySearchData.country.code}</ListGroup.Item>
+                            <ListGroup.Item>Name: {countrySearchData.country.name}</ListGroup.Item>
+                            <ListGroup.Item>Native: {countrySearchData.country.native}</ListGroup.Item>
+                            <ListGroup.Item>Phone: {countrySearchData.country.phone}</ListGroup.Item>
+                            <ListGroup.Item>Capital: {countrySearchData.country.capital}</ListGroup.Item>
+                            <ListGroup.Item>Currency: {countrySearchData.country.currency}</ListGroup.Item>
+                            <ListGroup.Item>Emoji: {countrySearchData.country.emoji}</ListGroup.Item>
+                        </ListGroup>
                     </div>
                     )}
                     {countryError && <h2> There was an error fetching the data</h2>}
