@@ -1,3 +1,7 @@
+# Search Query
+
+A search app using express, graphql, postgres, and react.
+
 ## Getting Started
 
 **Server**
